@@ -6,23 +6,69 @@ import java.util.List;
 public class vectorAdder{
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
-    ArrayList<String> vector1 = new ArrayList<String>();
-    ArrayList<String> vector2 = new ArrayList<String>();
-    boolean done = false;
+    List<Integer> vector1 = new ArrayList<Integer>();
+    List<Integer> vector2 = new ArrayList<Integer>();
+    boolean done_vec1 = false, done_vec2 = false, done = false;
     int counter;
 
-    do{
-      System.out.println("Input values of the first vector separated by spaces and press enter:");
-      vector1.add(scanner.nextLine());
-      done = true;
-    }while(!done);
 
-    List<String> itemList = Arrays.asList(list.get(0).split(" "));
-    list.remove(0);
-    for (counter = 0; counter < itemList.size(); counter++){
-      vector1.add(itemList.get(counter));
-    }
+
+    do{
+      List<String> temporaryList = new ArrayList<String>();
+      System.out.println("Input values of the first vector separated by spaces and press enter:");
+      temporaryList.add(scanner.nextLine());
+
+      temporaryList = Arrays.asList(temporaryList.get(0).split(" "));
+
+      for (counter = 0; counter < temporaryList.size(); counter++){
+        try{
+          //if (!("").equals(temporaryList.get(counter)))
+            vector1.add(Integer.parseInt(temporaryList.get(counter)));
+        }catch(NumberFormatException E){
+          //System.out.println(E);
+        }catch(Exception I){
+          System.out.println(I);
+        }
+      }
+
+      if (vector1.size() > 0)
+        done_vec1 = true;
+
+    }while(!done_vec1);
+
+    //temporaryList.clear(); //java.lang.UnsupportedOperationException
+
+    do{
+      List<String> temporaryList = new ArrayList<String>();
+      System.out.println("Input values of the second vector separated by spaces and press enter:");
+      temporaryList.add(scanner.nextLine());
+
+
+      temporaryList = Arrays.asList(temporaryList.get(0).split(" "));
+
+      for (counter = 0; counter < temporaryList.size(); counter++){
+        try{
+          //if (!("").equals(temporaryList.get(counter)))
+            vector2.add(Integer.parseInt(temporaryList.get(counter)));
+        }catch(NumberFormatException E){
+          //System.out.println(E);
+        }catch(Exception I){
+          System.out.println(I);
+        }
+      }
+
+      if (vector1.size() > 0)
+        done_vec2 = true;
+
+    }while(!done_vec2);
+
 
     System.out.println("vector1:" + vector1);
+    System.out.println("vector2:" + vector2);
   }
+
+  static void addVectors(List<Integer> vec1, List<Integer> vec2){
+
+  }
+
 }
