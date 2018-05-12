@@ -37,6 +37,9 @@ public class VectorAdder{
         sumOfVectors.add(vec1.get(counter) + vec2.get(counter));
 
       System.out.println("sum:" + sumOfVectors);
+
+      new SaveToFile(sumOfVectors);
+
     }else
       throw new DifferentVectorsLengthException();
   }

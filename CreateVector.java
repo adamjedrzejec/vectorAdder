@@ -3,7 +3,7 @@ import java.util.*;
 public class CreateVector{
   List<Integer> elements = new ArrayList<Integer>();
 
-  CreateVector(String whichVector){
+  public CreateVector(String whichVector){
 
     boolean done = false;
     Scanner scanner = new Scanner(System.in);
