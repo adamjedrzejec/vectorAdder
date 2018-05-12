@@ -2,10 +2,10 @@ import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.InputMismatchException;
 
 public class VectorAdder{
   public static void main(String[] args) {
-    Scanner scanner = new Scanner(System.in);
     boolean done = false;
     //int counter;
 
@@ -30,6 +30,10 @@ public class VectorAdder{
 
 
   static void addVectors(List<Integer> vec1, List<Integer> vec2) throws DifferentVectorsLengthException {
+
+    boolean done = false;
+    int saveMethod = 0;
+
     if (vec1.size() == vec2.size()){
       List<Integer> sumOfVectors = new ArrayList<Integer>();
 
@@ -38,7 +42,30 @@ public class VectorAdder{
 
       System.out.println("sum:" + sumOfVectors);
 
-      new SaveToFile(sumOfVectors);
+
+      Scanner scanner = new Scanner(System.in);
+
+      do{
+        try{
+          System.out.println("Choose method of saving: 1 FileOutputStream, 2 PrintWriter");
+          saveMethod = scanner.nextInt();
+          if(saveMethod == 1 || saveMethod == 2)
+            done = true;
+        }catch (IllegalStateException e) {
+          System.out.println("Invalid value!");
+          scanner.next();
+        }catch (InputMismatchException e) {
+          System.out.println("Invalid value!");
+          scanner.next();
+        }catch(Exception e){
+          System.out.println(e);
+        }
+      }while(!done);
+
+      scanner.close();
+
+      if(saveMethod == 1)
+        new SaveToFileFOS(sumOfVectors);
 
     }else
       throw new DifferentVectorsLengthException();
