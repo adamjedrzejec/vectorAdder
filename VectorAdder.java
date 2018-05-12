@@ -66,6 +66,8 @@ public class VectorAdder{
 
       if(saveMethod == 1)
         new SaveToFileFOS(sumOfVectors);
+      else if(saveMethod == 2)
+        new SaveToFilePW(sumOfVectors);
 
     }else
       throw new DifferentVectorsLengthException();
