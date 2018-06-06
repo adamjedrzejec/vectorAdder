@@ -7,7 +7,6 @@ import java.util.InputMismatchException;
 public class VectorAdder{
   public static void main(String[] args) {
     boolean done = false;
-    //int counter;
 
 
     do{
@@ -33,7 +32,8 @@ public class VectorAdder{
 
     boolean done = false;
     int saveMethod = 0;
-
+    int FileOutputStream = 1;
+    int PrintWriter = 2;
     if (vec1.size() == vec2.size()){
       List<Integer> sumOfVectors = new ArrayList<Integer>();
 
@@ -64,9 +64,9 @@ public class VectorAdder{
 
       scanner.close();
 
-      if(saveMethod == 1)
+      if(saveMethod == FileOutputStream)
         new SaveToFileFOS(sumOfVectors);
-      else if(saveMethod == 2)
+      else if(saveMethod == PrintWriter)
         new SaveToFilePW(sumOfVectors);
 
     }else
